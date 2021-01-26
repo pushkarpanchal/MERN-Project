@@ -3,7 +3,11 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
+import postRoutes from './routes/posts.js';
+
 const app = express();
+
+app.use('/posts', postRoutes);
 
 app.use(bodyParser.json({ limit: "30mb", "extended": true}));
 app.use(bodyParser.urlencoded({ limit: "30mb", "extended": true}));
@@ -19,4 +23,6 @@ mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: tr
 mongoose.set('useFindAndModify', false);
 
 // https://www.mongodb.com/cloud/atlas
+
+// mongodb+srv://mern_proj_93:<password>@cluster0.twsxi.mongodb.net/<dbname>?retryWrites=true&w=majority
 
